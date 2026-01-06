@@ -1,0 +1,273 @@
+/* ===== БАЗА ===== */
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: #fff0f5;
+  color: #333;
+  transition: background-color 0.8s ease;
+}
+
+/* ===== HEADER ===== */
+header {
+  background-color: #ff69b4;
+  padding: 20px 0;
+}
+
+header h1 {
+  margin: 0;
+  color: white;
+  animation: glow 3s ease-in-out infinite alternate;
+}
+
+.container {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ===== NAV ===== */
+nav a {
+  color: white;
+  margin: 0 8px;
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: white;
+  transition: width 0.4s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* ===== SECTIONS ===== */
+section {
+  padding: 40px 10%;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 1.3s ease forwards;
+}
+
+section:hover {
+  animation: fadeUp 1.3s ease forwards, breathe 3s ease-in-out infinite;
+}
+
+h2 {
+  color: #ff1493;
+  animation: slideGlow 1.4s ease forwards;
+}
+
+/* ===== TEXT ===== */
+p, li {
+  opacity: 0;
+  animation: textFade 1.5s ease forwards;
+}
+
+/* ===== IMAGES ===== */
+img {
+  max-width: 100%;
+  border-radius: 12px;
+  margin-top: 15px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+
+img:hover {
+  transform: scale(1.06);
+  box-shadow: 0 20px 40px rgba(255, 105, 180, 0.45);
+}
+
+/* ✨ shimmer */
+img::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.6),
+    transparent
+  );
+}
+
+img:hover::after {
+  animation: shimmer 1.3s ease;
+}
+
+/* ===== IMAGE GROUPS ===== */
+.product-images,
+.skincare-images {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* ===== MODELS ===== */
+.model {
+  margin-bottom: 30px;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.model img {
+  width: 250px;
+  animation: float 6s ease-in-out infinite;
+}
+
+.model:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 25px 45px rgba(0,0,0,0.25);
+}
+
+/* ===== BUTTON ===== */
+button.change-bg {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #ff69b4;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  animation: pulse 2s infinite;
+  transition: transform 0.3s ease;
+}
+
+button.change-bg:hover {
+  background-color: #ff1493;
+  transform: scale(1.12);
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background-color: #ff69b4;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+
+footer:hover {
+  animation: footerGlow 2s ease-in-out infinite;
+}
+
+/* ===== FOOTER TEXT ANIMATION ===== */
+footer p {
+  animation: footerText 4s ease-in-out infinite;
+}
+
+footer p:nth-child(1) {
+  animation-delay: 0s;
+}
+
+footer p:nth-child(2) {
+  animation-delay: 1.5s;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes textFade {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideGlow {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+    text-shadow: none;
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+    text-shadow: 0 0 15px rgba(255,20,147,0.7);
+  }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px rgba(255,105,180,0.4);
+  }
+  to {
+    text-shadow: 0 0 18px rgba(255,20,147,0.8);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255,105,180,0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 18px rgba(255,105,180,0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255,105,180,0);
+  }
+}
+
+@keyframes shimmer {
+  to {
+    left: 120%;
+  }
+}
+
+@keyframes breathe {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.015); }
+  100% { transform: scale(1); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes footerGlow {
+  0% { box-shadow: 0 0 10px rgba(255,105,180,0.3); }
+  50% { box-shadow: 0 0 30px rgba(255,105,180,0.8); }
+  100% { box-shadow: 0 0 10px rgba(255,105,180,0.3); }
+}
+
+@keyframes footerText {
+  0% {
+    opacity: 0.6;
+    transform: translateY(5px);
+    letter-spacing: 0px;
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(255,255,255,0.8);
+  }
+  100% {
+    opacity: 0.6;
+    transform: translateY(5px);
+    letter-spacing: 0px;
+  }
+}
